@@ -1,2 +1,16 @@
-<%= @list.title %>
-<%= @list.description %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> <%= @list.title %></th>
+      <th>Days Left: (6)</th> <!--  change it to @list.days_left -->
+      <th>Completed (X)</th> <!-- change it to @list.completed checkbox -->
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td colspan="3"><%= @list.description %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "Back to list", lists_path, class: 'center-block' %>
