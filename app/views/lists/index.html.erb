@@ -1,0 +1,31 @@
+<h2>User's List</h2>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= @lists.count %> Items</th>
+      <th>Item</th>
+      <th>Days Left</th>
+      <th>Completed</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lists.each do |list| %>
+      <tr>
+        <td>
+          # <%= list.id %>
+        <td>
+          <%= link_to list.title, list %>
+        </td>
+        <td>
+          <%= list.days_left %>
+        <td>
+          <%= list.completed %>
+        </td>
+    <% end %>
+      </tr>
+      <tr>
+        <td colspan='4'><%= link_to 'Add another item', new_list_path, class: 'center-block' %></td>
+      </tr>
+  </tbody>
+</table>
