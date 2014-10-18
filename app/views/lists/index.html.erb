@@ -1,11 +1,12 @@
-<h2>User's List</h2>
+<h3>User's List</h3>
 <table class="table table-hover">
   <thead>
     <tr>
-      <th><%= @lists.count %> Items</th>
-      <th>Item</th>
-      <th>Days Left</th>
-      <th>Completed</th>
+      <th class='col-md-1'><%= @lists.count %> Items</th>
+      <th class='col-md-3'>Item</th>
+      <th class='col-md-6'>Description</th>
+      <th class='col-md-1'>Days Left</th>
+      <th class='col-md-1'>Completed</th>
     </tr>
   </thead>
 
@@ -14,18 +15,24 @@
       <tr>
         <td>
           # <%= list.id %>
+        </td>
         <td>
           <%= link_to list.title, list %>
         </td>
         <td>
+          <%= list.description %>
+        </td>
+        <td>
           <%= list.days_left %>
+        </td>
         <td>
           <%= list.completed %>
         </td>
     <% end %>
       </tr>
       <tr>
-        <td colspan='4'><%= link_to 'Add another item', new_list_path, class: 'center-block' %></td>
+        <td></td>
+        <td colspan='4'><%= link_to 'Add another item', new_list_path %></td>
       </tr>
   </tbody>
 </table>
