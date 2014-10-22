@@ -22,4 +22,18 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
   end
+
+  def edit
+    @list = List.find(params[:id])
+  end
+
+  def update
+    @list = List.new(params.require(:list).permit(:title, :description))
+
+    if @list.save
+      redirect_to @list, notice: "List was updated!"
+    else
+      render :new
+    end
+  end
 end
