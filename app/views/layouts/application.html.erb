@@ -13,8 +13,12 @@
       <li><%= link_to "Profile", lists_path %></li>
       
       <div class='pull-right user-info'>
-        <button type='button' class='btn btn-default navbar-btn'>Sign in</button>
-        <button type='button' class='btn btn-default navbar-btn'>Sign out</button>
+        <% if current_user %>
+          Hello <%= current_user.email %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path %> or
+          <%= link_to "Sign up", new_user_registration_path %>
+        <% end %>
       </div>
     </ul>
 
