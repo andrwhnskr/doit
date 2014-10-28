@@ -28,12 +28,13 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list = List.new(params.require(:list).permit(:title, :description))
+    @list = List.find(params[:id])
 
-    if @list.save
+    if @list.update_attributes(params.require(:list).permit(:title, :description))
       redirect_to @list, notice: "List was updated!"
     else
-      render :new
+      flash[:error] = "Error saving list. Please try again"
+      render :edit
     end
   end
 end
