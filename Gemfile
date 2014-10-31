@@ -48,6 +48,7 @@ group :development, :test do
 end
 
 gem 'figaro', '1.0'
+gem 'whenever', :require => false
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
