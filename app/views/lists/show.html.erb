@@ -1,17 +1,14 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th> <%= @list.title %></th>
-      <th>Days Left: (6)</th> <!--  change it to @list.days_left -->
+      <th class="col-md-4"> <%= @list.title %></th>
+      <th>Days Left: <%= @list.days_left %></th> <!--  change it to @list.days_left -->
       <th>Completed (X)</th> <!-- change it to @list.completed checkbox -->
     </tr>
   </thead>
-
-  <tbody>
-    <tr>
-      <td colspan="3"><strong>Description: </strong><%= @list.description %></td>
-    </tr>  
-  </tbody>
 </table>
+    
+<p class="text-center"><%= @list.description %></p>
+
 <%= link_to "Edit Item", edit_list_path, class: 'btn btn-default' %>
 <p><%= link_to "Back to list", lists_path %></p>

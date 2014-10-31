@@ -1,18 +1,18 @@
 class ListsController < ApplicationController
   
   def index
-    @lists = List.all
+    @lists = current_user.lists
   end
 
   def new
-    @list = List.new  
+    @list = current_user.lists.build
   end
 
   def create
-    @list = List.new(params.require(:list).permit(:title, :description))
+    @list = current_user.lists.build(params.require(:list).permit(:title, :description))
 
     if @list.save
-      redirect_to @list, notice: "List was created!"
+      redirect_to lists_path, notice: "List was created!"
     else
       render :new
     end
@@ -20,15 +20,15 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
   end
 
   def edit
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
   end
 
   def update
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
 
     if @list.update_attributes(params.require(:list).permit(:title, :description))
       redirect_to @list, notice: "List was updated!"
@@ -37,4 +37,6 @@ class ListsController < ApplicationController
       render :edit
     end
   end
+
+
 end
