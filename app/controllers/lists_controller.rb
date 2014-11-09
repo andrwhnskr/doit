@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
-  
+  before_action :set_list, only: [:update, :destroy, :show]
+
   def index
     @lists = current_user.lists
   end
@@ -9,7 +10,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = current_user.lists.build(params.require(:list).permit(:title, :description))
+    @list = current_user.lists.build(list_params)
 
     if @list.save
       redirect_to lists_path, notice: "List was created!"
@@ -20,22 +21,37 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = current_user.lists.find(params[:id])
   end
 
   def edit
-    @list = current_user.lists.find(params[:id])
   end
 
   def update
-    @list = current_user.lists.find(params[:id])
-
-    if @list.update_attributes(params.require(:list).permit(:title, :description))
+    if @list.update_attributes(list_params)
       redirect_to @list, notice: "List was updated!"
     else
       flash[:error] = "Error saving list. Please try again"
       render :edit
     end
+  end
+
+  def destroy
+    if @list.destroy
+      flash[:success] = "List was deleted"
+    else
+      flash[:error] = "List could not be deleted"
+    end
+    redirect_to lists_path
+  end
+
+  private
+
+  def set_list
+    @list = current_user.lists.find(params[:id])
+  end
+
+  def list_params
+    params.require(:list).permit(:title, :description)
   end
 
 
