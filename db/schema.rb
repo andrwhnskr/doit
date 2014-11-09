@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030163506) do
+ActiveRecord::Schema.define(version: 20141031025248) do
 
   create_table "lists", force: true do |t|
     t.string   "title"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20141030163506) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "days_left"
-    t.boolean  "completed"
+    t.boolean  "completed",   default: false
     t.integer  "user_id"
   end
 
