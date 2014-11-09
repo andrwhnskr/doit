@@ -11,7 +11,12 @@ Doit::Application.routes.draw do
     end
   end
 
-  resources :lists
+  resources :lists do
+    member do
+      patch :complete
+      patch :redo
+    end
+  end
 
   
 
