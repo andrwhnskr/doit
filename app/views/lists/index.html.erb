@@ -1,58 +1,46 @@
-<h3>Completed Items</h3>
-<table class="table table-hover">
+<h3>Todo List</h3>
+<table class="table">
   <thead>
     <tr>
-      <th class='col-md-1'><%= @completed.count %></th>
-      <th class="col-md-3">Item</th>
-      <th class="col-md-6">Description</th>
-      <th class="col-md-1">Redo</th>
-      <th class="col-md-1">Delete</th>
+      <th><i class='glyphicon glyphicon-ok-sign'></i></th>
+      <th class='list-item'>Item</th>
+      <th class='days-left'>Due</th>
+      <th class='trash'>Delete</th>
     </tr>
   </thead>
   <tbody>
     <% @completed.each do |list| %>
-      <tr>
-        <td># <%= list.id %></td>
-        <td><%= link_to list.title, list %></td>
-        <td><%= list.description %></td>
-        <td><%= link_to "Redo", redo_list_path(list), method: :patch %></td>
-        <td><%= link_to "Delete", list_path(list), class: 'btn btn-danger', method: :delete, data: { confirm: "Are you sure?" } %></td>
-    <% end %>
-  </tbody>
-</table>
-
-<h3>To-do List</h3>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th class='col-md-1'> <%= @lists.count %> Items</th>
-      <th class='col-md-3'>Item</th>
-      <th class='col-md-6'>Description</th>
-      <th class='col-md-1'>Days Left</th>
-      <th class='col-md-1'>Completed</th>
+    <tr class='completed'>
+        <td class='complete'><%= link_to complete_list_path(list), method: :patch do %>
+          <i class='glyphicon glyphicon-ok'></i>
+        <% end %>
+        </td>
+        <td class='list-item'><strike><%= link_to list.title, list %></strike></td>
+        <td class='days-left'><%= pluralize(list.days_left, 'day') %></td>
+        <td class='trash'><%= link_to list_path(list), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class='glyphicon glyphicon-trash'></i>
+        <% end %>
+        </td>
+      <% end %>
     </tr>
-  </thead>
-
-  <tbody>
     <% @lists.each do |list| %>
-      <tr>
-        <td>
-          # <%= list.id %>
+    <tr class='todo'>
+        <td class='complete'><%= link_to complete_list_path(list), method: :patch do %>
+          <i class='glyphicon glyphicon-ok'></i>
+        <% end %>
         </td>
-        <td>
-          <%= link_to list.title, list %>
+        <td class='list-item'><%= link_to list.title, list %></td>
+        <td class='days-left'><%= pluralize(list.days_left, 'day') %></td>
+        <td class='delete'><%= link_to list_path(list), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class='glyphicon glyphicon-trash'></i>
+        <% end %>
         </td>
-        <td>
-          <%= list.description %>
-        </td>
-        <td>
-          <%= pluralize(list.days_left, 'day') %>
-        </td>
-        <td>
-          <%= link_to "Complete", complete_list_path(list), method: :patch %>
-        </td>
-    <% end %>
-      </tr>
+      <% end %>
+    </tr>
+    <tr id='forms'>
+      <td colspan='4'>
+        <%= render "lists/form" %>
+      </td>
+    </tr>
   </tbody>
 </table>
-<%= link_to 'Add another item', new_list_path, class: "btn btn-success" %>

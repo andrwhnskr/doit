@@ -4,6 +4,7 @@ class ListsController < ApplicationController
   def index
     @lists = current_user.lists.not_done
     @completed = current_user.lists.done
+    @list = current_user.lists.build
   end
 
   def new
