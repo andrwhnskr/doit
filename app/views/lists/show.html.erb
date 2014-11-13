@@ -1,15 +1,29 @@
-<table class="table table-hover">
+<h3>Item Details</h3>
+<table class='table'>
   <thead>
     <tr>
-      <th class="col-md-4"> <%= @list.title %></th>
-      <th>Days Left: <%= @list.days_left %></th> <!--  change it to @list.days_left -->
-      <th>Completed (X)</th> <!-- change it to @list.completed checkbox -->
+      <th class='complete'><%= link_to complete_list_path(@list), method: :patch do %>
+        <% if @list.completed %>
+        <i style='opacity: 0.4' class='glyphicon glyphicon-ok'></i>
+        <% else %>
+        <i class='glyphicon glyphicon-ok'></i>
+        <% end %>
+      <% end %>
+      <th class='list-item'><%= @list.title %></th>
+      <th class='days-left'><%= @list.days_left %> <small>Days</small></th> <!--  change it to @list.days_left -->
+      <th class='complete'><%= link_to complete_list_path(@list), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class='glyphicon glyphicon-trash'></i>
+      <% end %>
+      </th>
     </tr>
   </thead>
+  <tbody>
+    <tr>
+      <td colspan='3' class='links'><%= @list.description %></td>
+    </tr>
+  </tbody>
 </table>
-    
-<p class="text-center"><%= @list.description %></p>
-
-<%= link_to "Edit Item", edit_list_path, class: 'btn btn-default' %>
-<%= link_to "Delete Item", list_path(@list), class: 'btn btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
-<p><%= link_to "Back to list", lists_path %></p>
+  <%= link_to 'Edit ', edit_list_path(@list), class: 'btn btn-primary' %>
+<div class="links">
+  <%= link_to 'Back', lists_path %>
+</div>

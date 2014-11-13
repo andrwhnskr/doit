@@ -1,5 +1,71 @@
 @import "bootstrap";
 
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  width: 50%
+  
+}
+.completed {
+  width: 100%;
+  opacity: 0.4;
+  text-align: center;
+
+}
+
+.todo {
+  width: 100%;
+  text-align: center;
+
+}
+
+.complete {
+  width: 10%;
+  }
+
+  .list-item {
+  width: 70%;
+
+  }
+
+  .days-left {
+  width: 10;
+  }
+
+  .trash {
+  width: 10%;
+  }
+
+.list-item {
+  text-align: left;
+}
+
+#forms {
+  text-align: center;
+
+  input[type='text'] {
+    width: 30%;
+    margin-right: 2%;
+    display: inline-block;
+    outline: none;
+    height: 30px;
+  }
+
+  input[type='submit'] {
+    width: 25%;
+    height: 30px;
+    outline: none;
+
+  }
+}
+
+
 .nav {
   margin-top: 5px;
 }
@@ -7,4 +73,23 @@
 
 .user-info {
   margin-top: 9px;
+}
+
+.form-group {
+  display: inline;
+}
+.btn {
+  font-weight: 800;
+  width: 166px;
+  margin: 15px auto 0 auto;
+  display: block;
+}
+
+#newone {
+    display: inline;
+    margin: 0 0 0 0;
+  }
+
+th, .links {
+  text-align: center;
 }

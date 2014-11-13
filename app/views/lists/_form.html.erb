@@ -1,0 +1,21 @@
+<%= form_for(@list) do |f| %>
+<% if @list.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>There are <%= pluralize(@list.errors.count, "error") %> errors.</h4>
+      <ul>
+        <% @list.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_group_tag(@list.errors[:title]) do %>
+    <%= f.text_field :title, placeholder: 'Item'%>
+  <% end %>
+  <%= form_group_tag(@list.errors[:description]) do %>
+    <%= f.text_field :description, placeholder: 'Description' %>
+  <% end %>
+  <%= f.submit value: 'Create New Item', class: 'btn btn-success', id: 'newone' %>
+
+<% end %>

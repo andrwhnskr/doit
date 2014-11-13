@@ -2,7 +2,9 @@ class ListsController < ApplicationController
   before_action :set_list, except: [:index, :new, :create]
 
   def index
-    @lists = current_user.lists
+    @lists = current_user.lists.not_done
+    @completed = current_user.lists.done
+    @list = current_user.lists.build
   end
 
   def new
@@ -16,8 +18,7 @@ class ListsController < ApplicationController
       redirect_to lists_path, notice: "List was created!"
     else
       render :new
-    end
-    
+    end   
   end
 
   def show
