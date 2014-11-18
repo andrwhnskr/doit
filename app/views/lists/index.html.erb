@@ -15,7 +15,7 @@
           <i class='glyphicon glyphicon-ok'></i>
         <% end %>
         </td>
-        <td class='list-item'><strike><%= link_to list.title, list %></strike></td>
+        <td class='list-item'><strike><%= link_to truncate(list.title, length: 50), list %></strike></td>
         <td class='days-left'><%= pluralize(list.days_left, 'day') %></td>
         <td class='trash'><%= link_to list_path(list), method: :delete, data: { confirm: "Are you sure?" } do %>
           <i class='glyphicon glyphicon-trash'></i>
@@ -29,7 +29,7 @@
           <i class='glyphicon glyphicon-ok'></i>
         <% end %>
         </td>
-        <td class='list-item'><%= link_to list.title, list %></td>
+        <td class='list-item'><%= link_to truncate(list.title, length: 50), list %></td>
         <td class='days-left'><%= pluralize(list.days_left, 'day') %></td>
         <td class='delete'><%= link_to list_path(list), method: :delete, data: { confirm: "Are you sure?" } do %>
           <i class='glyphicon glyphicon-trash'></i>

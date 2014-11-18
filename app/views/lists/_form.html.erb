@@ -1,5 +1,5 @@
 <%= form_for(@list) do |f| %>
-<!--   <% if @list.errors.any? %>
+  <% if @list.errors.any? %>
     <div class="alert alert-danger">
       <h4>There are <%= pluralize(@list.errors.count, "error") %> errors.</h4>
       <ul>
@@ -8,7 +8,7 @@
         <% end %>
       </ul>
     </div>
-  <% end %> -->
+  <% end %>
 
   <%= form_group_tag(@list.errors[:title]) do %>
     <%= f.text_field :title, placeholder: 'Item'%>

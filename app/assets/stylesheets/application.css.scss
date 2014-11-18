@@ -93,3 +93,20 @@ body {
 th, .links {
   text-align: center;
 }
+.error-form {
+
+  input[type='text'] {
+    width:  80%;
+    margin-bottom: 20px;
+    display: inline-block;
+    outline: none;
+    height: 30px;
+  }
+
+  input[type='submit'] {
+    width: 25%;
+    height: 30px;
+    outline: none;
+
+  }
+}
